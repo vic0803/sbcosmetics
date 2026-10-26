@@ -3,6 +3,10 @@
    i18n (UA/EN), mobile menu, day/night hero, accordion
    ============================================================ */
 
+/* Mark that JS is active, so reveal animations only hide content when
+   we can actually un-hide it. Runs immediately to avoid a flash. */
+document.documentElement.classList.add("js");
+
 /* ---------- Translations ---------- */
 const I18N = {
   ua: {
@@ -29,6 +33,17 @@ const I18N = {
 
     "home.bestTitle": "Бестселери",
     "home.bestSub": "Те, що найчастіше обирають наші клієнти.",
+
+    "story.tag": "Ручна робота · Малі партії",
+    "story.eyebrow": "Історія бренду",
+    "story.title": "Народжено з любові до деталей",
+    "story.p1": "Усе почалося на домашній кухні — з перших брусків мила, зварених вручну для рідних. Сьогодні це преміальна косметика малими партіями, у якій збережено ту саму турботу.",
+    "story.p2": "Кожен рецепт — це баланс натуральних інгредієнтів, прозорого складу та естетики, яку хочеться тримати в руках.",
+    "story.sign": "— Sophie Bilynska",
+    "story.stat1": "років ручної роботи",
+    "story.stat2": "натуральний склад",
+    "story.stat3": "авторських рецептів",
+
     "home.aboutTitle": "Філософія бренду",
     "home.aboutText": "Ми створюємо косметику малими партіями з натуральних інгредієнтів. Прозорий склад, сертифікація та увага до кожної деталі.",
     "home.aboutCta": "Про бренд",
@@ -92,6 +107,17 @@ const I18N = {
 
     "home.bestTitle": "Bestsellers",
     "home.bestSub": "What our customers choose most.",
+
+    "story.tag": "Hand made · Small batch",
+    "story.eyebrow": "Brand story",
+    "story.title": "Born from a love of detail",
+    "story.p1": "It all started in a home kitchen — with the first bars of soap made by hand for family. Today it is premium small-batch cosmetics that keep that same care.",
+    "story.p2": "Every recipe is a balance of natural ingredients, a transparent formula and an aesthetic you want to hold in your hands.",
+    "story.sign": "— Sophie Bilynska",
+    "story.stat1": "years handcrafting",
+    "story.stat2": "natural formula",
+    "story.stat3": "original recipes",
+
     "home.aboutTitle": "Brand philosophy",
     "home.aboutText": "We craft cosmetics in small batches from natural ingredients. Transparent formulas, certification and attention to every detail.",
     "home.aboutCta": "About the brand",
@@ -293,6 +319,43 @@ function initCartButtons() {
   );
 }
 
+/* ---------- Scroll reveal ---------- */
+function initReveal() {
+  const items = document.querySelectorAll(".reveal");
+  if (!items.length) return;
+
+  const reveal = (el) => el.classList.add("in");
+
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce || !("IntersectionObserver" in window)) {
+    items.forEach(reveal);
+    return;
+  }
+
+  const io = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          reveal(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+  );
+
+  items.forEach((el) => io.observe(el));
+
+  // Safety net: anything still hidden after 2.5s (e.g. observer never fired,
+  // element already in view on load, or layout quirks) is revealed anyway,
+  // so content is never permanently invisible.
+  setTimeout(() => {
+    items.forEach((el) => {
+      if (!el.classList.contains("in")) reveal(el);
+    });
+  }, 2500);
+}
+
 /* ---------- Init ---------- */
 document.addEventListener("DOMContentLoaded", () => {
   applyLang(getLang());
@@ -308,4 +371,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initQty();
   initToggles();
   initCartButtons();
+  initReveal();
 });

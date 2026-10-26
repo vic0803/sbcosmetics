@@ -69,10 +69,10 @@
       <h2 class="section-title" data-i18n="home.catsTitle">Категорії</h2>
       <p class="section-sub" data-i18n="home.catsSub">Обрані засоби для обличчя, тіла та волосся.</p>
       <div class="cats">
-        <a href="catalog.html" class="cat"><div><div class="cat-icon">🧼</div><div class="cat-name" data-i18n="cat.soap">Мило</div></div></a>
-        <a href="catalog.html" class="cat"><div><div class="cat-icon">💄</div><div class="cat-name" data-i18n="cat.lips">Губи</div></div></a>
-        <a href="catalog.html" class="cat"><div><div class="cat-icon">🫧</div><div class="cat-name" data-i18n="cat.body">Тіло</div></div></a>
-        <a href="catalog.html" class="cat"><div><div class="cat-icon">🎁</div><div class="cat-name" data-i18n="cat.sets">Набори</div></div></a>
+        <a href="catalog.html" class="cat reveal"><div><div class="cat-icon">🧼</div><div class="cat-name" data-i18n="cat.soap">Мило</div></div></a>
+        <a href="catalog.html" class="cat reveal" data-delay="1"><div><div class="cat-icon">💄</div><div class="cat-name" data-i18n="cat.lips">Губи</div></div></a>
+        <a href="catalog.html" class="cat reveal" data-delay="2"><div><div class="cat-icon">🫧</div><div class="cat-name" data-i18n="cat.body">Тіло</div></div></a>
+        <a href="catalog.html" class="cat reveal" data-delay="3"><div><div class="cat-icon">🎁</div><div class="cat-name" data-i18n="cat.sets">Набори</div></div></a>
       </div>
     </div>
   </section>
@@ -84,7 +84,7 @@
       <h2 class="section-title" data-i18n="home.bestTitle">Бестселери</h2>
       <p class="section-sub" data-i18n="home.bestSub">Те, що найчастіше обирають наші клієнти.</p>
       <div class="grid">
-        <div class="card-wrap">
+        <div class="card-wrap reveal">
           <span class="card-badge" data-i18n="badge.best">Хіт</span>
           <a href="product.html" class="card">
             <div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/soap-flora.jpg')"></div></div>
@@ -95,7 +95,7 @@
             </div>
           </a>
         </div>
-        <div class="card-wrap">
+        <div class="card-wrap reveal" data-delay="1">
           <span class="card-badge" data-i18n="badge.best">Хіт</span>
           <a href="product.html" class="card">
             <div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/soap-honey.jpg')"></div></div>
@@ -106,7 +106,7 @@
             </div>
           </a>
         </div>
-        <div class="card-wrap">
+        <div class="card-wrap reveal" data-delay="2">
           <span class="card-badge" data-i18n="badge.new">Новинка</span>
           <a href="product.html" class="card">
             <div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/lipstick.jpg')"></div></div>
@@ -117,7 +117,7 @@
             </div>
           </a>
         </div>
-        <div class="card-wrap">
+        <div class="card-wrap reveal" data-delay="3">
           <a href="product.html" class="card">
             <div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/soap-heart.png')"></div></div>
             <div class="card-body">
@@ -134,9 +134,32 @@
     </div>
   </section>
 
+  <!-- Story / Founder -->
+  <section class="section story" id="story">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-media reveal" style="background-image:url('assets/products/soap-flora.jpg')">
+          <span class="story-tag" data-i18n="story.tag">Hand made · Small batch</span>
+        </div>
+        <div class="story-body reveal" data-delay="1">
+          <span class="eyebrow" data-i18n="story.eyebrow">Історія бренду</span>
+          <h2 data-i18n="story.title">Народжено з любові до деталей</h2>
+          <p data-i18n="story.p1">Усе почалося на домашній кухні — з перших брусків мила, зварених вручну для рідних. Сьогодні це преміальна косметика малими партіями, у якій збережено ту саму турботу.</p>
+          <p data-i18n="story.p2">Кожен рецепт — це баланс натуральних інгредієнтів, прозорого складу та естетики, яку хочеться тримати в руках.</p>
+          <div class="story-sign" data-i18n="story.sign">— Sophie Bilynska</div>
+          <div class="story-stats">
+            <div class="story-stat"><span class="num">8+</span><span class="lbl" data-i18n="story.stat1">років ручної роботи</span></div>
+            <div class="story-stat"><span class="num">100%</span><span class="lbl" data-i18n="story.stat2">натуральний склад</span></div>
+            <div class="story-stat"><span class="num">40+</span><span class="lbl" data-i18n="story.stat3">авторських рецептів</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- About -->
   <section class="section" id="about" style="background:var(--black-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-    <div class="container" style="max-width:720px;text-align:center">
+    <div class="container reveal" style="max-width:720px;text-align:center">
       <p class="eyebrow" data-i18n="home.aboutTitle">Філософія бренду</p>
       <h2 class="section-title" data-i18n="home.aboutTitle">Філософія бренду</h2>
       <p class="section-sub" data-i18n="home.aboutText">Ми створюємо косметику малими партіями з натуральних інгредієнтів.</p>

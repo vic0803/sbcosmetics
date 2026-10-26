@@ -12,3 +12,6 @@ assets/fonts/
 .env
 .env.*
 !.env.example
+
+# Local preview screenshots (Playwright captures)
+.preview/
