@@ -7,14 +7,17 @@
   <meta name="description" content="Преміальна косметика ручної роботи. Догляд за обличчям, тілом та волоссям." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <!-- Header -->
   <header class="header">
     <div class="container header-inner">
-      <a href="index.html" class="logo">Sophia <b>Belinska</b></a>
+      <a href="index.html" class="logo">
+        <img src="assets/logo/monogram.png" alt="Sophie Bilynska Cosmetics" />
+        <span class="logo-text">Sophie <b>Bilynska</b></span>
+      </a>
       <nav class="nav">
         <a href="catalog.html" data-i18n="nav.catalog">Каталог</a>
         <a href="catalog.html" data-i18n="nav.bundles">Набори</a>
@@ -27,7 +30,7 @@
           <button data-lang="ua">UA</button>
           <button data-lang="en">EN</button>
         </div>
-        <button class="icon-btn" aria-label="Cart">♥</button>
+        <button class="icon-btn" aria-label="Wishlist">♥</button>
         <button class="icon-btn" aria-label="Cart">
           🛍
           <span class="cart-count">0</span>
@@ -48,10 +51,11 @@
 
   <!-- Hero -->
   <section class="hero">
+    <div class="hero-photo" style="background-image:url('assets/products/soap-flora.jpg')"></div>
     <div class="hero-inner">
-      <div class="hero-jar">🌙</div>
+      <img class="hero-emblem" src="assets/logo/emblem.png" alt="Sophie Bilynska emblem" />
       <p class="eyebrow" data-i18n="hero.eyebrow">Преміальна косметика ручної роботи</p>
-      <h1 data-i18n="hero.title">Sophia Belinska</h1>
+      <h1 data-i18n="hero.title">Sophie Bilynska</h1>
       <p data-i18n="hero.text">Догляд, що змінюється разом із вашим днем.</p>
       <a href="catalog.html" class="btn btn-fill" data-i18n="hero.cta">Переглянути каталог</a>
     </div>
@@ -65,9 +69,9 @@
       <h2 class="section-title" data-i18n="home.catsTitle">Категорії</h2>
       <p class="section-sub" data-i18n="home.catsSub">Обрані засоби для обличчя, тіла та волосся.</p>
       <div class="cats">
-        <a href="catalog.html" class="cat"><div><div class="cat-icon">🧴</div><div class="cat-name" data-i18n="cat.face">Обличчя</div></div></a>
+        <a href="catalog.html" class="cat"><div><div class="cat-icon">🧼</div><div class="cat-name" data-i18n="cat.soap">Мило</div></div></a>
+        <a href="catalog.html" class="cat"><div><div class="cat-icon">💄</div><div class="cat-name" data-i18n="cat.lips">Губи</div></div></a>
         <a href="catalog.html" class="cat"><div><div class="cat-icon">🫧</div><div class="cat-name" data-i18n="cat.body">Тіло</div></div></a>
-        <a href="catalog.html" class="cat"><div><div class="cat-icon">💆</div><div class="cat-name" data-i18n="cat.hair">Волосся</div></div></a>
         <a href="catalog.html" class="cat"><div><div class="cat-icon">🎁</div><div class="cat-name" data-i18n="cat.sets">Набори</div></div></a>
       </div>
     </div>
@@ -83,41 +87,42 @@
         <div class="card-wrap">
           <span class="card-badge" data-i18n="badge.best">Хіт</span>
           <a href="product.html" class="card">
-            <div class="card-media">🧴</div>
+            <div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/soap-flora.jpg')"></div></div>
             <div class="card-body">
-              <span class="card-cat" data-i18n="cat.face">Обличчя</span>
-              <span class="card-name">Night Renewal Cream</span>
-              <span class="card-price">890 ₴</span>
+              <span class="card-cat" data-i18n="cat.soap">Мило</span>
+              <span class="card-name">Мило «Флора»</span>
+              <span class="card-price">320 ₴</span>
+            </div>
+          </a>
+        </div>
+        <div class="card-wrap">
+          <span class="card-badge" data-i18n="badge.best">Хіт</span>
+          <a href="product.html" class="card">
+            <div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/soap-honey.jpg')"></div></div>
+            <div class="card-body">
+              <span class="card-cat" data-i18n="cat.soap">Мило</span>
+              <span class="card-name">Мило «Сота»</span>
+              <span class="card-price">260 ₴</span>
             </div>
           </a>
         </div>
         <div class="card-wrap">
           <span class="card-badge" data-i18n="badge.new">Новинка</span>
           <a href="product.html" class="card">
-            <div class="card-media">💧</div>
+            <div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/lipstick.jpg')"></div></div>
             <div class="card-body">
-              <span class="card-cat" data-i18n="cat.face">Обличчя</span>
-              <span class="card-name">Morning Glow Serum</span>
-              <span class="card-price">1 150 ₴</span>
+              <span class="card-cat" data-i18n="cat.lips">Губи</span>
+              <span class="card-name">Бальзам для губ</span>
+              <span class="card-price">290 ₴</span>
             </div>
           </a>
         </div>
         <div class="card-wrap">
           <a href="product.html" class="card">
-            <div class="card-media">🫗</div>
+            <div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/soap-heart.png')"></div></div>
             <div class="card-body">
-              <span class="card-cat" data-i18n="cat.body">Тіло</span>
-              <span class="card-name">Silk Body Oil</span>
-              <span class="card-price">720 ₴</span>
-            </div>
-          </a>
-        </div>
-        <div class="card-wrap">
-          <a href="product.html" class="card">
-            <div class="card-media">🧼</div>
-            <div class="card-body">
-              <span class="card-cat" data-i18n="cat.hair">Волосся</span>
-              <span class="card-name">Solid Shampoo Bar</span>
+              <span class="card-cat" data-i18n="cat.soap">Мило</span>
+              <span class="card-name">Мило «Серце»</span>
               <span class="card-price">340 ₴</span>
             </div>
           </a>
@@ -144,7 +149,10 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <a href="index.html" class="logo">Sophia <b>Belinska</b></a>
+          <a href="index.html" class="logo">
+            <img src="assets/logo/emblem.png" alt="Sophie Bilynska" style="height:48px" />
+            <span class="logo-text">Sophie <b>Bilynska</b></span>
+          </a>
           <p style="color:var(--text-muted);margin-top:12px;font-size:0.9rem" data-i18n="common.freeShip">Безкоштовна доставка від 2000 ₴</p>
         </div>
         <div>

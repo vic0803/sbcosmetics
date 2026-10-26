@@ -7,13 +7,16 @@
   <meta name="description" content="Каталог преміальної косметики Sophia Belinska." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <header class="header">
     <div class="container header-inner">
-      <a href="index.html" class="logo">Sophia <b>Belinska</b></a>
+      <a href="index.html" class="logo">
+        <img src="assets/logo/monogram.png" alt="Sophie Bilynska Cosmetics" />
+        <span class="logo-text">Sophie <b>Bilynska</b></span>
+      </a>
       <nav class="nav">
         <a href="catalog.html" class="active" data-i18n="nav.catalog">Каталог</a>
         <a href="catalog.html" data-i18n="nav.bundles">Набори</a>
@@ -51,9 +54,9 @@
     <div class="toolbar">
       <div class="filters">
         <button class="chip active" data-i18n="filter.all">Усі</button>
-        <button class="chip" data-i18n="filter.face">Обличчя</button>
-        <button class="chip" data-i18n="filter.body">Тіло</button>
-        <button class="chip" data-i18n="filter.hair">Волосся</button>
+        <button class="chip" data-i18n="cat.soap">Мило</button>
+        <button class="chip" data-i18n="cat.lips">Губи</button>
+        <button class="chip" data-i18n="cat.body">Тіло</button>
       </div>
       <select class="select">
         <option data-i18n="sort.popular">За популярністю</option>
@@ -63,18 +66,14 @@
     </div>
 
     <div class="grid" style="padding-bottom:64px">
-      <div class="card-wrap"><span class="card-badge" data-i18n="badge.best">Хіт</span><a href="product.html" class="card"><div class="card-media">🧴</div><div class="card-body"><span class="card-cat" data-i18n="cat.face">Обличчя</span><span class="card-name">Night Renewal Cream</span><span class="card-price">890 ₴</span></div></a></div>
-      <div class="card-wrap"><span class="card-badge" data-i18n="badge.new">Новинка</span><a href="product.html" class="card"><div class="card-media">💧</div><div class="card-body"><span class="card-cat" data-i18n="cat.face">Обличчя</span><span class="card-name">Morning Glow Serum</span><span class="card-price">1 150 ₴</span></div></a></div>
-      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media">🫗</div><div class="card-body"><span class="card-cat" data-i18n="cat.body">Тіло</span><span class="card-name">Silk Body Oil</span><span class="card-price">720 ₴</span></div></a></div>
-      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media">🧼</div><div class="card-body"><span class="card-cat" data-i18n="cat.hair">Волосся</span><span class="card-name">Solid Shampoo Bar</span><span class="card-price">340 ₴</span></div></a></div>
-      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media">🧖</div><div class="card-body"><span class="card-cat" data-i18n="cat.face">Обличчя</span><span class="card-name">Clay Purifying Mask</span><span class="card-price">560 ₴</span></div></a></div>
-      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media">🌿</div><div class="card-body"><span class="card-cat" data-i18n="cat.body">Тіло</span><span class="card-name">Herbal Hand Balm</span><span class="card-price">290 ₴</span></div></a></div>
-      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media">🧴</div><div class="card-body"><span class="card-cat" data-i18n="cat.hair">Волосся</span><span class="card-name">Argan Hair Oil</span><span class="card-price">680 ₴</span></div></a></div>
-      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media">💄</div><div class="card-body"><span class="card-cat" data-i18n="cat.face">Обличчя</span><span class="card-name">Rose Lip Balm</span><span class="card-price">210 ₴</span></div></a></div>
-      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media">🫧</div><div class="card-body"><span class="card-cat" data-i18n="cat.body">Тіло</span><span class="card-name">Citrus Body Scrub</span><span class="card-price">480 ₴</span></div></a></div>
-      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media">✨</div><div class="card-body"><span class="card-cat" data-i18n="cat.face">Обличчя</span><span class="card-name">Vitamin C Essence</span><span class="card-price">1 290 ₴</span></div></a></div>
-      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media">🌙</div><div class="card-body"><span class="card-cat" data-i18n="cat.face">Обличчя</span><span class="card-name">Overnight Mask</span><span class="card-price">940 ₴</span></div></a></div>
-      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media">🧴</div><div class="card-body"><span class="card-cat" data-i18n="cat.hair">Волосся</span><span class="card-name">Scalp Tonic</span><span class="card-price">610 ₴</span></div></a></div>
+      <div class="card-wrap"><span class="card-badge" data-i18n="badge.best">Хіт</span><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/soap-flora.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.soap">Мило</span><span class="card-name">Мило «Флора»</span><span class="card-price">320 ₴</span></div></a></div>
+      <div class="card-wrap"><span class="card-badge" data-i18n="badge.best">Хіт</span><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/soap-honey.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.soap">Мило</span><span class="card-name">Мило «Сота»</span><span class="card-price">260 ₴</span></div></a></div>
+      <div class="card-wrap"><span class="card-badge" data-i18n="badge.new">Новинка</span><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/lipstick.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.lips">Губи</span><span class="card-name">Бальзам для губ</span><span class="card-price">290 ₴</span></div></a></div>
+      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/soap-heart.png')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.soap">Мило</span><span class="card-name">Мило «Серце»</span><span class="card-price">340 ₴</span></div></a></div>
+      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/soap-honey.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.soap">Мило</span><span class="card-name">Мило «Медове»</span><span class="card-price">260 ₴</span></div></a></div>
+      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/lipstick.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.lips">Губи</span><span class="card-name">Бальзам «Троянда»</span><span class="card-price">290 ₴</span></div></a></div>
+      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/soap-flora.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.soap">Мило</span><span class="card-name">Мило «Афіна»</span><span class="card-price">320 ₴</span></div></a></div>
+      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/soap-heart.png')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.soap">Мило</span><span class="card-name">Мило «Венера»</span><span class="card-price">340 ₴</span></div></a></div>
     </div>
   </div>
 

@@ -1,1 +1,5 @@
 .DS_Store
+
+# Licensed fonts — do NOT publish to public repo (local use only).
+# The public site uses the Jost web font as a visually-close fallback.
+assets/fonts/

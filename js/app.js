@@ -13,8 +13,8 @@ const I18N = {
     "nav.contacts": "Контакти",
 
     "hero.eyebrow": "Преміальна косметика ручної роботи",
-    "hero.title": "Sophia Belinska",
-    "hero.text": "Догляд, що змінюється разом із вашим днем. Прокрутіть, щоб відчути перехід від ночі до ранку.",
+    "hero.title": "Sophie Bilynska",
+    "hero.text": "Косметика ручної роботи з натуральних інгредієнтів. Мило, бальзами та догляд у преміальній еко-упаковці.",
     "hero.cta": "Переглянути каталог",
     "hero.hint": "Прокрутіть вниз",
 
@@ -23,6 +23,8 @@ const I18N = {
     "cat.face": "Обличчя",
     "cat.body": "Тіло",
     "cat.hair": "Волосся",
+    "cat.soap": "Мило",
+    "cat.lips": "Губи",
     "cat.sets": "Набори",
 
     "home.bestTitle": "Бестселери",
@@ -74,8 +76,8 @@ const I18N = {
     "nav.contacts": "Contacts",
 
     "hero.eyebrow": "Premium handcrafted cosmetics",
-    "hero.title": "Sophia Belinska",
-    "hero.text": "Skincare that shifts with your day. Scroll to feel the transition from night to morning.",
+    "hero.title": "Sophie Bilynska",
+    "hero.text": "Handcrafted cosmetics from natural ingredients. Soaps, balms and care in premium eco packaging.",
     "hero.cta": "Explore the catalog",
     "hero.hint": "Scroll down",
 
@@ -84,6 +86,8 @@ const I18N = {
     "cat.face": "Face",
     "cat.body": "Body",
     "cat.hair": "Hair",
+    "cat.soap": "Soap",
+    "cat.lips": "Lips",
     "cat.sets": "Sets",
 
     "home.bestTitle": "Bestsellers",
@@ -265,7 +269,8 @@ function initToggles() {
     thumb.addEventListener("click", () => {
       document.querySelectorAll(".pdp-thumb").forEach((t) => t.classList.remove("active"));
       thumb.classList.add("active");
-      if (main) main.textContent = thumb.textContent;
+      const img = thumb.getAttribute("data-img");
+      if (main && img) main.style.backgroundImage = `url('${img}')`;
     })
   );
 
