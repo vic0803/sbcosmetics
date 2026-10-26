@@ -361,7 +361,7 @@ h1, h2, h3, h4 {
   color: var(--gold);
 }
 
-/* ---------- Hero (day/night) ---------- */
+/* ---------- Hero ---------- */
 .hero {
   position: relative;
   min-height: calc(100vh - var(--header-h));
@@ -369,23 +369,13 @@ h1, h2, h3, h4 {
   place-items: center;
   text-align: center;
   overflow: hidden;
-  transition: background 1.2s ease;
   background: linear-gradient(160deg, #050505, #15130c 60%, #1d1708);
-}
-
-.hero.day {
-  background: linear-gradient(160deg, #e9e2d2, #f3ecdc 60%, #efe7d2);
 }
 
 .hero-inner {
   position: relative;
   z-index: 2;
   padding: 40px 20px;
-  transition: color 1.2s ease;
-}
-
-.hero.day .hero-inner {
-  color: var(--black);
 }
 
 .hero h1 {
@@ -398,31 +388,17 @@ h1, h2, h3, h4 {
   text-shadow: 0 4px 24px rgba(224, 169, 61, 0.28);
 }
 
-.hero.day h1 {
-  text-shadow: 0 4px 20px rgba(185, 130, 42, 0.22);
-}
-
 .hero p {
   max-width: 440px;
   margin: 0 auto 32px;
   color: var(--text-muted);
-  transition: color 1.2s ease;
-}
-
-.hero.day p {
-  color: #5a5245;
 }
 
 .hero-emblem {
   width: clamp(120px, 34vw, 200px);
   height: auto;
   margin: 0 auto 4px;
-  transition: filter 1.2s ease, transform 1.2s ease;
   filter: drop-shadow(0 12px 40px rgba(224, 169, 61, 0.45));
-}
-
-.hero.day .hero-emblem {
-  filter: drop-shadow(0 12px 40px rgba(120, 96, 50, 0.25));
 }
 
 .hero-photo {
@@ -432,10 +408,7 @@ h1, h2, h3, h4 {
   background-size: cover;
   background-position: center;
   opacity: 0.22;
-  transition: opacity 1.2s ease;
 }
-
-.hero.day .hero-photo { opacity: 0.12; }
 
 .hero::after {
   content: "";
@@ -443,10 +416,7 @@ h1, h2, h3, h4 {
   inset: 0;
   z-index: 1;
   background: radial-gradient(circle at 50% 42%, transparent 20%, rgba(11,11,12,0.7) 85%);
-  transition: opacity 1.2s ease;
 }
-
-.hero.day::after { opacity: 0; }
 
 .hero-hint {
   position: absolute;

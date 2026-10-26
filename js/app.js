@@ -1,6 +1,6 @@
 /* ============================================================
    Sophia Belinska Cosmetics — Prototype JS
-   i18n (UA/EN), mobile menu, day/night hero, accordion
+   i18n (UA/EN), mobile menu, accordion, scroll reveal
    ============================================================ */
 
 /* Mark that JS is active, so reveal animations only hide content when
@@ -245,18 +245,6 @@ function initMenu() {
   );
 }
 
-/* ---------- Hero day/night on scroll ---------- */
-function initHero() {
-  const hero = document.querySelector(".hero");
-  if (!hero) return;
-  const onScroll = () => {
-    const trigger = window.innerHeight * 0.35;
-    hero.classList.toggle("day", window.scrollY > trigger);
-  };
-  window.addEventListener("scroll", onScroll, { passive: true });
-  onScroll();
-}
-
 /* ---------- Accordion ---------- */
 function initAccordion() {
   document.querySelectorAll(".acc-head").forEach((head) => {
@@ -366,7 +354,6 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   initMenu();
-  initHero();
   initAccordion();
   initQty();
   initToggles();
