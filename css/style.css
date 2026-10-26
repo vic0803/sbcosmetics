@@ -35,18 +35,37 @@
   --black: #0b0b0c;
   --black-soft: #131314;
   --black-card: #19181a;
-  --gold: #e0a93d;
-  --gold-light: #f0c667;
-  --gold-soft: #cf9a34;
-  --gold-deep: #b9822a;
+
+  /* Gold — tuned to the polished metal of the brand's lipstick cases:
+     bright near-white glints, warm gold mids, deep bronze shadows.
+     Chrome-gold reads as metal only via alternating light/dark stops. */
+  --gold: #d9a43a;        /* base gold */
+  --gold-light: #f5d47a;  /* bright gold */
+  --gold-soft: #c6922f;   /* mid shade */
+  --gold-deep: #8a5e1e;   /* bronze shadow */
+  --gold-glint: #fff6df;  /* near-white specular highlight */
+
   --pearl: #f3efe9;
   --cream: #f3efe9;
   --text: #ece8e0;
   --text-muted: #9c968c;
-  --line: rgba(224, 169, 61, 0.16);
+  --line: rgba(217, 164, 58, 0.2);
 
-  /* Gradient gold (matches the logo) */
-  --gold-grad: linear-gradient(135deg, #f0c667, #e0a93d 55%, #b9822a);
+  /* Chrome-gold: alternating specular glints and bronze shadows, like
+     light wrapping a polished metal cylinder. The repeated light/dark
+     bands are what make it read as shiny metal instead of flat yellow. */
+  --gold-grad: linear-gradient(
+    110deg,
+    #8a5e1e 0%,
+    #d9a43a 14%,
+    #fff6df 26%,
+    #e9c25c 38%,
+    #a9772a 50%,
+    #f5d47a 64%,
+    #fff6df 74%,
+    #c6922f 86%,
+    #8a5e1e 100%
+  );
 
   /* Typography — geometric, brand Futura with Jost fallback */
   --font-head: "Futura PT", "Jost", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -179,13 +198,21 @@ h1, h2, h3, h4 {
 }
 
 .btn-fill {
-  background: var(--gold);
-  color: var(--black);
+  background: var(--gold-grad);
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+  border-color: transparent;
+  color: #3a2708;
+  font-weight: 600;
+  text-shadow: 0 1px 0 rgba(255, 246, 223, 0.35);
+  box-shadow: 0 6px 20px rgba(138, 94, 30, 0.35), inset 0 1px 0 rgba(255, 246, 223, 0.5);
+  transition: background-position var(--transition), box-shadow var(--transition), transform var(--transition);
 }
 
 .btn-fill:hover {
-  background: var(--gold-light);
-  border-color: var(--gold-light);
+  background-position: 100% 50%;
+  box-shadow: 0 8px 26px rgba(138, 94, 30, 0.45), inset 0 1px 0 rgba(255, 246, 223, 0.6);
+  transform: translateY(-1px);
 }
 
 .btn-block {
@@ -385,7 +412,22 @@ h1, h2, h3, h4 {
   font-weight: 500;
   margin: 18px 0 16px;
   text-indent: 0.22em; /* compensate trailing letter-spacing for optical centering */
-  text-shadow: 0 4px 24px rgba(224, 169, 61, 0.28);
+  /* Chrome-gold gilded lettering — shiny metal with specular glints */
+  background: linear-gradient(
+    175deg,
+    #fff6df 0%,
+    #f5d47a 18%,
+    #d9a43a 34%,
+    #8a5e1e 48%,
+    #e9c25c 60%,
+    #fff6df 70%,
+    #c6922f 86%,
+    #a9772a 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 4px 22px rgba(217, 164, 58, 0.35));
 }
 
 .hero p {
