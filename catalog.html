@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Каталог — Sophia Belinska Cosmetics</title>
+  <meta name="description" content="Каталог преміальної косметики Sophia Belinska." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Sophia <b>Belinska</b></a>
+      <nav class="nav">
+        <a href="catalog.html" class="active" data-i18n="nav.catalog">Каталог</a>
+        <a href="catalog.html" data-i18n="nav.bundles">Набори</a>
+        <a href="index.html#about" data-i18n="nav.about">Бренд</a>
+        <a href="index.html" data-i18n="nav.delivery">Доставка</a>
+        <a href="index.html" data-i18n="nav.contacts">Контакти</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang">
+          <button data-lang="ua">UA</button>
+          <button data-lang="en">EN</button>
+        </div>
+        <button class="icon-btn" aria-label="Wishlist">♥</button>
+        <button class="icon-btn" aria-label="Cart">🛍<span class="cart-count">0</span></button>
+        <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-menu">
+    <a href="catalog.html" data-i18n="nav.catalog">Каталог</a>
+    <a href="catalog.html" data-i18n="nav.bundles">Набори</a>
+    <a href="index.html#about" data-i18n="nav.about">Бренд</a>
+    <a href="index.html" data-i18n="nav.delivery">Доставка</a>
+    <a href="index.html" data-i18n="nav.contacts">Контакти</a>
+  </nav>
+
+  <div class="container">
+    <div class="catalog-head">
+      <p class="eyebrow" data-i18n="catalog.title">Каталог</p>
+      <h1 class="section-title" data-i18n="catalog.title">Каталог</h1>
+      <p class="section-sub" data-i18n="catalog.sub">20–40 ретельно підібраних засобів.</p>
+    </div>
+
+    <div class="toolbar">
+      <div class="filters">
+        <button class="chip active" data-i18n="filter.all">Усі</button>
+        <button class="chip" data-i18n="filter.face">Обличчя</button>
+        <button class="chip" data-i18n="filter.body">Тіло</button>
+        <button class="chip" data-i18n="filter.hair">Волосся</button>
+      </div>
+      <select class="select">
+        <option data-i18n="sort.popular">За популярністю</option>
+        <option data-i18n="sort.priceAsc">Ціна: за зростанням</option>
+        <option data-i18n="sort.priceDesc">Ціна: за спаданням</option>
+      </select>
+    </div>
+
+    <div class="grid" style="padding-bottom:64px">
+      <div class="card-wrap"><span class="card-badge" data-i18n="badge.best">Хіт</span><a href="product.html" class="card"><div class="card-media">🧴</div><div class="card-body"><span class="card-cat" data-i18n="cat.face">Обличчя</span><span class="card-name">Night Renewal Cream</span><span class="card-price">890 ₴</span></div></a></div>
+      <div class="card-wrap"><span class="card-badge" data-i18n="badge.new">Новинка</span><a href="product.html" class="card"><div class="card-media">💧</div><div class="card-body"><span class="card-cat" data-i18n="cat.face">Обличчя</span><span class="card-name">Morning Glow Serum</span><span class="card-price">1 150 ₴</span></div></a></div>
+      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media">🫗</div><div class="card-body"><span class="card-cat" data-i18n="cat.body">Тіло</span><span class="card-name">Silk Body Oil</span><span class="card-price">720 ₴</span></div></a></div>
+      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media">🧼</div><div class="card-body"><span class="card-cat" data-i18n="cat.hair">Волосся</span><span class="card-name">Solid Shampoo Bar</span><span class="card-price">340 ₴</span></div></a></div>
+      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media">🧖</div><div class="card-body"><span class="card-cat" data-i18n="cat.face">Обличчя</span><span class="card-name">Clay Purifying Mask</span><span class="card-price">560 ₴</span></div></a></div>
+      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media">🌿</div><div class="card-body"><span class="card-cat" data-i18n="cat.body">Тіло</span><span class="card-name">Herbal Hand Balm</span><span class="card-price">290 ₴</span></div></a></div>
+      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media">🧴</div><div class="card-body"><span class="card-cat" data-i18n="cat.hair">Волосся</span><span class="card-name">Argan Hair Oil</span><span class="card-price">680 ₴</span></div></a></div>
+      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media">💄</div><div class="card-body"><span class="card-cat" data-i18n="cat.face">Обличчя</span><span class="card-name">Rose Lip Balm</span><span class="card-price">210 ₴</span></div></a></div>
+      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media">🫧</div><div class="card-body"><span class="card-cat" data-i18n="cat.body">Тіло</span><span class="card-name">Citrus Body Scrub</span><span class="card-price">480 ₴</span></div></a></div>
+      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media">✨</div><div class="card-body"><span class="card-cat" data-i18n="cat.face">Обличчя</span><span class="card-name">Vitamin C Essence</span><span class="card-price">1 290 ₴</span></div></a></div>
+      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media">🌙</div><div class="card-body"><span class="card-cat" data-i18n="cat.face">Обличчя</span><span class="card-name">Overnight Mask</span><span class="card-price">940 ₴</span></div></a></div>
+      <div class="card-wrap"><a href="product.html" class="card"><div class="card-media">🧴</div><div class="card-body"><span class="card-cat" data-i18n="cat.hair">Волосся</span><span class="card-name">Scalp Tonic</span><span class="card-price">610 ₴</span></div></a></div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        © 2026 Sophia Belinska Cosmetics. <span data-i18n="foot.rights">Усі права захищено.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

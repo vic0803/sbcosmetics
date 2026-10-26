@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sophia Belinska Cosmetics</title>
+  <meta name="description" content="Преміальна косметика ручної роботи. Догляд за обличчям, тілом та волоссям." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Sophia <b>Belinska</b></a>
+      <nav class="nav">
+        <a href="catalog.html" data-i18n="nav.catalog">Каталог</a>
+        <a href="catalog.html" data-i18n="nav.bundles">Набори</a>
+        <a href="index.html#about" data-i18n="nav.about">Бренд</a>
+        <a href="index.html" data-i18n="nav.delivery">Доставка</a>
+        <a href="index.html" data-i18n="nav.contacts">Контакти</a>
+      </nav>
+      <div class="header-actions">
+        <div class="lang">
+          <button data-lang="ua">UA</button>
+          <button data-lang="en">EN</button>
+        </div>
+        <button class="icon-btn" aria-label="Cart">♥</button>
+        <button class="icon-btn" aria-label="Cart">
+          🛍
+          <span class="cart-count">0</span>
+        </button>
+        <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile menu -->
+  <nav class="mobile-menu">
+    <a href="catalog.html" data-i18n="nav.catalog">Каталог</a>
+    <a href="catalog.html" data-i18n="nav.bundles">Набори</a>
+    <a href="index.html#about" data-i18n="nav.about">Бренд</a>
+    <a href="index.html" data-i18n="nav.delivery">Доставка</a>
+    <a href="index.html" data-i18n="nav.contacts">Контакти</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-jar">🌙</div>
+      <p class="eyebrow" data-i18n="hero.eyebrow">Преміальна косметика ручної роботи</p>
+      <h1 data-i18n="hero.title">Sophia Belinska</h1>
+      <p data-i18n="hero.text">Догляд, що змінюється разом із вашим днем.</p>
+      <a href="catalog.html" class="btn btn-fill" data-i18n="hero.cta">Переглянути каталог</a>
+    </div>
+    <div class="hero-hint" data-i18n="hero.hint">Прокрутіть вниз</div>
+  </section>
+
+  <!-- Categories -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow" style="text-align:center" data-i18n="home.catsTitle">Категорії</p>
+      <h2 class="section-title" data-i18n="home.catsTitle">Категорії</h2>
+      <p class="section-sub" data-i18n="home.catsSub">Обрані засоби для обличчя, тіла та волосся.</p>
+      <div class="cats">
+        <a href="catalog.html" class="cat"><div><div class="cat-icon">🧴</div><div class="cat-name" data-i18n="cat.face">Обличчя</div></div></a>
+        <a href="catalog.html" class="cat"><div><div class="cat-icon">🫧</div><div class="cat-name" data-i18n="cat.body">Тіло</div></div></a>
+        <a href="catalog.html" class="cat"><div><div class="cat-icon">💆</div><div class="cat-name" data-i18n="cat.hair">Волосся</div></div></a>
+        <a href="catalog.html" class="cat"><div><div class="cat-icon">🎁</div><div class="cat-name" data-i18n="cat.sets">Набори</div></div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bestsellers -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <p class="eyebrow" style="text-align:center" data-i18n="home.bestTitle">Бестселери</p>
+      <h2 class="section-title" data-i18n="home.bestTitle">Бестселери</h2>
+      <p class="section-sub" data-i18n="home.bestSub">Те, що найчастіше обирають наші клієнти.</p>
+      <div class="grid">
+        <div class="card-wrap">
+          <span class="card-badge" data-i18n="badge.best">Хіт</span>
+          <a href="product.html" class="card">
+            <div class="card-media">🧴</div>
+            <div class="card-body">
+              <span class="card-cat" data-i18n="cat.face">Обличчя</span>
+              <span class="card-name">Night Renewal Cream</span>
+              <span class="card-price">890 ₴</span>
+            </div>
+          </a>
+        </div>
+        <div class="card-wrap">
+          <span class="card-badge" data-i18n="badge.new">Новинка</span>
+          <a href="product.html" class="card">
+            <div class="card-media">💧</div>
+            <div class="card-body">
+              <span class="card-cat" data-i18n="cat.face">Обличчя</span>
+              <span class="card-name">Morning Glow Serum</span>
+              <span class="card-price">1 150 ₴</span>
+            </div>
+          </a>
+        </div>
+        <div class="card-wrap">
+          <a href="product.html" class="card">
+            <div class="card-media">🫗</div>
+            <div class="card-body">
+              <span class="card-cat" data-i18n="cat.body">Тіло</span>
+              <span class="card-name">Silk Body Oil</span>
+              <span class="card-price">720 ₴</span>
+            </div>
+          </a>
+        </div>
+        <div class="card-wrap">
+          <a href="product.html" class="card">
+            <div class="card-media">🧼</div>
+            <div class="card-body">
+              <span class="card-cat" data-i18n="cat.hair">Волосся</span>
+              <span class="card-name">Solid Shampoo Bar</span>
+              <span class="card-price">340 ₴</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:36px">
+        <a href="catalog.html" class="btn" data-i18n="hero.cta">Переглянути каталог</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section" id="about" style="background:var(--black-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="container" style="max-width:720px;text-align:center">
+      <p class="eyebrow" data-i18n="home.aboutTitle">Філософія бренду</p>
+      <h2 class="section-title" data-i18n="home.aboutTitle">Філософія бренду</h2>
+      <p class="section-sub" data-i18n="home.aboutText">Ми створюємо косметику малими партіями з натуральних інгредієнтів.</p>
+      <a href="index.html" class="btn" data-i18n="home.aboutCta">Про бренд</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo">Sophia <b>Belinska</b></a>
+          <p style="color:var(--text-muted);margin-top:12px;font-size:0.9rem" data-i18n="common.freeShip">Безкоштовна доставка від 2000 ₴</p>
+        </div>
+        <div>
+          <h4 data-i18n="foot.shop">Магазин</h4>
+          <ul>
+            <li><a href="catalog.html" data-i18n="cat.face">Обличчя</a></li>
+            <li><a href="catalog.html" data-i18n="cat.body">Тіло</a></li>
+            <li><a href="catalog.html" data-i18n="cat.hair">Волосся</a></li>
+            <li><a href="catalog.html" data-i18n="cat.sets">Набори</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="foot.help">Допомога</h4>
+          <ul>
+            <li><a href="index.html" data-i18n="foot.faq">Часті питання</a></li>
+            <li><a href="index.html" data-i18n="nav.delivery">Доставка</a></li>
+            <li><a href="index.html" data-i18n="nav.contacts">Контакти</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-i18n="foot.company">Компанія</h4>
+          <ul>
+            <li><a href="index.html" data-i18n="nav.about">Бренд</a></li>
+            <li><a href="index.html" data-i18n="foot.terms">Умови</a></li>
+            <li><a href="index.html" data-i18n="foot.privacy">Конфіденційність</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 Sophia Belinska Cosmetics. <span data-i18n="foot.rights">Усі права захищено.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
