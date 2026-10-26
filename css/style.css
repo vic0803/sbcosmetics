@@ -58,11 +58,11 @@
     110deg,
     #8a5e1e 0%,
     #d9a43a 14%,
-    #fff6df 26%,
+    #f6d888 26%,
     #e9c25c 38%,
     #a9772a 50%,
     #f5d47a 64%,
-    #fff6df 74%,
+    #f6d888 74%,
     #c6922f 86%,
     #8a5e1e 100%
   );
@@ -412,16 +412,17 @@ h1, h2, h3, h4 {
   font-weight: 500;
   margin: 18px 0 16px;
   text-indent: 0.22em; /* compensate trailing letter-spacing for optical centering */
-  /* Chrome-gold gilded lettering — shiny metal with specular glints */
+  /* Chrome-gold gilded lettering — shiny metal, but glints stay GOLD
+     (light gold), never white, so letters read as gold not silver/white. */
   background: linear-gradient(
     175deg,
-    #fff6df 0%,
-    #f5d47a 18%,
-    #d9a43a 34%,
-    #8a5e1e 48%,
-    #e9c25c 60%,
-    #fff6df 70%,
-    #c6922f 86%,
+    #f3ce74 0%,
+    #e4b94e 16%,
+    #d9a43a 32%,
+    #9a6e22 48%,
+    #e9c25c 62%,
+    #f3ce74 72%,
+    #c6922f 88%,
     #a9772a 100%
   );
   -webkit-background-clip: text;
