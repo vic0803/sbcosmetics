@@ -412,23 +412,11 @@ h1, h2, h3, h4 {
   font-weight: 500;
   margin: 18px 0 16px;
   text-indent: 0.22em; /* compensate trailing letter-spacing for optical centering */
-  /* Chrome-gold gilded lettering — shiny metal, but glints stay GOLD
-     (light gold), never white, so letters read as gold not silver/white. */
-  background: linear-gradient(
-    175deg,
-    #f3ce74 0%,
-    #e4b94e 16%,
-    #d9a43a 32%,
-    #9a6e22 48%,
-    #e9c25c 62%,
-    #f3ce74 72%,
-    #c6922f 88%,
-    #a9772a 100%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  filter: drop-shadow(0 4px 22px rgba(217, 164, 58, 0.35));
+  /* White lettering with a strong black outer shadow for contrast */
+  color: #ffffff;
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.9),
+    0 6px 24px rgba(0, 0, 0, 0.7);
 }
 
 .hero p {
