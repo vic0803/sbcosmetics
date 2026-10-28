@@ -22,6 +22,15 @@ const I18N = {
     "hero.cta": "Переглянути каталог",
     "hero.hint": "Прокрутіть вниз",
 
+    "home.shopNow": "Переглянути",
+    "home.ed1Kicker": "Нова колекція",
+    "home.ed1Title": "Скульптурне мило ручної роботи",
+    "home.ed1Text": "Барельєфи, зварені малими партіями з натуральних олій.",
+    "home.ed2Kicker": "Догляд за губами",
+    "home.ed2Title": "Бальзами, що живлять",
+    "home.ed2Text": "Поживні текстури з олій ши та рослинних восків.",
+
+    "home.catsKicker": "Колекція",
     "home.catsTitle": "Категорії",
     "home.catsSub": "Обрані засоби для обличчя, тіла та волосся.",
     "cat.face": "Обличчя",
@@ -31,6 +40,7 @@ const I18N = {
     "cat.lips": "Губи",
     "cat.sets": "Набори",
 
+    "home.bestKicker": "Обране",
     "home.bestTitle": "Бестселери",
     "home.bestSub": "Те, що найчастіше обирають наші клієнти.",
 
@@ -44,6 +54,7 @@ const I18N = {
     "story.stat2": "натуральний склад",
     "story.stat3": "авторських рецептів",
 
+    "home.aboutKicker": "Наша філософія",
     "home.aboutTitle": "Філософія бренду",
     "home.aboutText": "Ми створюємо косметику малими партіями з натуральних інгредієнтів. Прозорий склад, сертифікація та увага до кожної деталі.",
     "home.aboutCta": "Про бренд",
@@ -96,6 +107,15 @@ const I18N = {
     "hero.cta": "Explore the catalog",
     "hero.hint": "Scroll down",
 
+    "home.shopNow": "Shop now",
+    "home.ed1Kicker": "New collection",
+    "home.ed1Title": "Sculpted handmade soap",
+    "home.ed1Text": "Bas-relief bars, cooked in small batches from natural oils.",
+    "home.ed2Kicker": "Lip care",
+    "home.ed2Title": "Balms that nourish",
+    "home.ed2Text": "Rich textures of shea butter and plant waxes.",
+
+    "home.catsKicker": "The collection",
     "home.catsTitle": "Categories",
     "home.catsSub": "Curated products for face, body and hair.",
     "cat.face": "Face",
@@ -105,6 +125,7 @@ const I18N = {
     "cat.lips": "Lips",
     "cat.sets": "Sets",
 
+    "home.bestKicker": "Selected",
     "home.bestTitle": "Bestsellers",
     "home.bestSub": "What our customers choose most.",
 
@@ -118,6 +139,7 @@ const I18N = {
     "story.stat2": "natural formula",
     "story.stat3": "original recipes",
 
+    "home.aboutKicker": "Our philosophy",
     "home.aboutTitle": "Brand philosophy",
     "home.aboutText": "We craft cosmetics in small batches from natural ingredients. Transparent formulas, certification and attention to every detail.",
     "home.aboutCta": "About the brand",
@@ -239,10 +261,38 @@ function initMenu() {
   const burger = document.querySelector(".burger");
   const menu = document.querySelector(".mobile-menu");
   if (!burger || !menu) return;
-  burger.addEventListener("click", () => menu.classList.toggle("open"));
-  menu.querySelectorAll("a").forEach((a) =>
-    a.addEventListener("click", () => menu.classList.remove("open"))
-  );
+
+  // Dim overlay behind the drawer (created once)
+  let overlay = document.querySelector(".menu-overlay");
+  if (!overlay) {
+    overlay = document.createElement("div");
+    overlay.className = "menu-overlay";
+    document.body.appendChild(overlay);
+  }
+
+  const close = () => {
+    menu.classList.remove("open");
+    burger.classList.remove("active");
+    overlay.classList.remove("open");
+    document.body.style.overflow = "";
+  };
+
+  const toggle = () => {
+    const willOpen = !menu.classList.contains("open");
+    menu.classList.toggle("open", willOpen);
+    burger.classList.toggle("active", willOpen);
+    overlay.classList.toggle("open", willOpen);
+    // Lock scroll while the drawer is open
+    document.body.style.overflow = willOpen ? "hidden" : "";
+  };
+
+  burger.addEventListener("click", toggle);
+  overlay.addEventListener("click", close);
+  menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
+  // Esc closes the menu
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && menu.classList.contains("open")) close();
+  });
 }
 
 /* ---------- Accordion ---------- */
@@ -278,23 +328,100 @@ function initToggles() {
     );
   });
 
+  // Gallery thumbnail swap with a short cross-fade
   const main = document.querySelector(".pdp-main");
   document.querySelectorAll(".pdp-thumb").forEach((thumb) =>
     thumb.addEventListener("click", () => {
       document.querySelectorAll(".pdp-thumb").forEach((t) => t.classList.remove("active"));
       thumb.classList.add("active");
       const img = thumb.getAttribute("data-img");
-      if (main && img) main.style.backgroundImage = `url('${img}')`;
+      if (main && img) {
+        main.classList.add("swapping");
+        setTimeout(() => {
+          main.style.backgroundImage = `url('${img}')`;
+          main.classList.remove("swapping");
+        }, 200);
+      }
     })
   );
+}
 
-  document.querySelectorAll(".chip").forEach((chip) =>
+/* ---------- Catalog filtering ---------- */
+function initFilters() {
+  const row = document.querySelector(".filters");
+  const grid = document.querySelector(".grid");
+  if (!row || !grid) return;
+
+  const chips = row.querySelectorAll(".chip");
+  const cards = grid.querySelectorAll(".card-wrap");
+
+  // Map a chip to the category label it filters by (read from the live DOM,
+  // so it works in both UA and EN after translation).
+  chips.forEach((chip) =>
     chip.addEventListener("click", () => {
-      const row = chip.closest(".filters");
-      if (row) row.querySelectorAll(".chip").forEach((c) => c.classList.remove("active"));
+      chips.forEach((c) => c.classList.remove("active"));
       chip.classList.add("active");
+
+      const key = chip.getAttribute("data-i18n") || "";
+      const isAll = key === "filter.all";
+      const want = chip.textContent.trim().toLowerCase();
+
+      cards.forEach((card) => {
+        const catEl = card.querySelector(".card-cat");
+        const cat = catEl ? catEl.textContent.trim().toLowerCase() : "";
+        const show = isAll || cat === want;
+
+        if (show) {
+          card.classList.remove("filtering");
+          card.style.display = "";
+        } else {
+          card.classList.add("filtering");
+          // Hide after the fade-out finishes
+          setTimeout(() => {
+            if (card.classList.contains("filtering")) card.style.display = "none";
+          }, 300);
+        }
+      });
     })
   );
+}
+
+/* ---------- Scroll progress + header condense ---------- */
+function initScrollFx() {
+  const header = document.querySelector(".header");
+
+  // Golden progress thread
+  let bar = document.querySelector(".scroll-progress");
+  if (!bar) {
+    bar = document.createElement("div");
+    bar.className = "scroll-progress";
+    document.body.appendChild(bar);
+  }
+
+  let ticking = false;
+
+  const onScroll = () => {
+    const y = window.scrollY || window.pageYOffset;
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docH > 0 ? y / docH : 0;
+
+    bar.style.transform = `scaleX(${progress})`;
+    if (header) header.classList.toggle("scrolled", y > 24);
+
+    ticking = false;
+  };
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (!ticking) {
+        requestAnimationFrame(onScroll);
+        ticking = true;
+      }
+    },
+    { passive: true }
+  );
+  onScroll();
 }
 
 /* ---------- Add-to-cart buttons ---------- */
@@ -357,6 +484,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initAccordion();
   initQty();
   initToggles();
+  initFilters();
   initCartButtons();
   initReveal();
+  initScrollFx();
 });
