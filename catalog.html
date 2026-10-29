@@ -15,33 +15,35 @@
     <div class="container header-inner">
       <a href="index.html" class="logo">
         <img src="assets/logo/monogram.png" alt="Sophie Bilynska Cosmetics" />
-        <span class="logo-text">Sophie <b>Bilynska</b></span>
       </a>
-      <nav class="nav">
-        <a href="catalog.html" class="active" data-i18n="nav.catalog">Каталог</a>
-        <a href="catalog.html" data-i18n="nav.bundles">Набори</a>
-        <a href="index.html#about" data-i18n="nav.about">Бренд</a>
-        <a href="index.html" data-i18n="nav.delivery">Доставка</a>
-        <a href="index.html" data-i18n="nav.contacts">Контакти</a>
-      </nav>
-      <div class="header-actions">
+      <div class="header-right">
         <div class="lang">
           <button data-lang="ua">UA</button>
           <button data-lang="en">EN</button>
         </div>
-        <button class="icon-btn" aria-label="Wishlist">♥</button>
-        <button class="icon-btn" aria-label="Cart">🛍<span class="cart-count">0</span></button>
-        <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+        <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </div>
   </header>
 
-  <nav class="mobile-menu">
-    <a href="catalog.html" data-i18n="nav.catalog">Каталог</a>
-    <a href="catalog.html" data-i18n="nav.bundles">Набори</a>
-    <a href="index.html#about" data-i18n="nav.about">Бренд</a>
-    <a href="index.html" data-i18n="nav.delivery">Доставка</a>
-    <a href="index.html" data-i18n="nav.contacts">Контакти</a>
+  <!-- Flyout menu -->
+  <div class="menu-overlay"></div>
+  <nav class="mobile-menu" aria-label="Main menu">
+    <button class="menu-close" aria-label="Close">&times;</button>
+    <div class="menu-links">
+      <a href="brand.html" data-i18n="nav.about">Бренд</a>
+      <div class="menu-group">
+        <a href="catalog.html" class="menu-group-head" data-i18n="nav.catalog">Каталог</a>
+        <div class="submenu">
+          <a href="catalog.html" data-i18n="cat.face">Обличчя</a>
+          <a href="catalog.html" data-i18n="cat.body">Тіло</a>
+          <a href="catalog.html" data-i18n="cat.hair">Волосся</a>
+          <a href="catalog.html" data-i18n="nav.bundles">Набори</a>
+        </div>
+      </div>
+      <a href="contacts.html" data-i18n="nav.contacts">Контакти</a>
+      <a href="catalog.html" class="menu-cart">🛍 <span data-i18n="menu.cart">Кошик</span> <span class="cart-count">0</span></a>
+    </div>
   </nav>
 
   <div class="container">
@@ -54,9 +56,9 @@
     <div class="toolbar">
       <div class="filters">
         <button class="chip active" data-i18n="filter.all">Усі</button>
-        <button class="chip" data-i18n="cat.soap">Мило</button>
-        <button class="chip" data-i18n="cat.lips">Губи</button>
+        <button class="chip" data-i18n="cat.face">Обличчя</button>
         <button class="chip" data-i18n="cat.body">Тіло</button>
+        <button class="chip" data-i18n="cat.hair">Волосся</button>
       </div>
       <select class="select">
         <option data-i18n="sort.popular">За популярністю</option>
@@ -66,14 +68,17 @@
     </div>
 
     <div class="grid" style="padding-bottom:64px">
-      <div class="card-wrap reveal"><span class="card-badge" data-i18n="badge.best">Хіт</span><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/soap-flora.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.soap">Мило</span><span class="card-name">Мило «Флора»</span><span class="card-price">320 ₴</span></div></a></div>
-      <div class="card-wrap reveal" data-delay="1"><span class="card-badge" data-i18n="badge.best">Хіт</span><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/soap-honey.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.soap">Мило</span><span class="card-name">Мило «Сота»</span><span class="card-price">260 ₴</span></div></a></div>
-      <div class="card-wrap reveal" data-delay="2"><span class="card-badge" data-i18n="badge.new">Новинка</span><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/lipstick.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.lips">Губи</span><span class="card-name">Бальзам для губ</span><span class="card-price">290 ₴</span></div></a></div>
-      <div class="card-wrap reveal" data-delay="3"><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/soap-heart.png')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.soap">Мило</span><span class="card-name">Мило «Серце»</span><span class="card-price">340 ₴</span></div></a></div>
-      <div class="card-wrap reveal"><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/soap-honey.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.soap">Мило</span><span class="card-name">Мило «Медове»</span><span class="card-price">260 ₴</span></div></a></div>
-      <div class="card-wrap reveal" data-delay="1"><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/lipstick.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.lips">Губи</span><span class="card-name">Бальзам «Троянда»</span><span class="card-price">290 ₴</span></div></a></div>
-      <div class="card-wrap reveal" data-delay="2"><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/soap-flora.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.soap">Мило</span><span class="card-name">Мило «Афіна»</span><span class="card-price">320 ₴</span></div></a></div>
-      <div class="card-wrap reveal" data-delay="3"><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/soap-heart.png')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.soap">Мило</span><span class="card-name">Мило «Венера»</span><span class="card-price">340 ₴</span></div></a></div>
+      <div class="card-wrap reveal"><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/intimate-foam.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.body">Тіло</span><span class="card-name">Делікатна пінка для зовнішньої інтимної гігієни</span><span class="card-price">600 ₴</span></div></a></div>
+      <div class="card-wrap reveal" data-delay="1"><span class="card-badge" data-i18n="badge.best">Хіт</span><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/eye-cream.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.face">Обличчя</span><span class="card-name">Зволожувальний крем для шкіри навколо очей та обличчя</span><span class="card-price">1 200 ₴</span></div></a></div>
+      <div class="card-wrap reveal" data-delay="2"><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/scrub-soap.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.body">Тіло</span><span class="card-name">Мило-скраб з гвоздикою</span><span class="card-price">270 ₴</span></div></a></div>
+      <div class="card-wrap reveal" data-delay="3"><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/face-foam.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.face">Обличчя</span><span class="card-name">Делікатна пінка для щоденного очищення обличчя</span><span class="card-price">890 ₴</span></div></a></div>
+      <div class="card-wrap reveal"><span class="card-badge" data-i18n="badge.best">Хіт</span><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/serum-gel.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.face">Обличчя</span><span class="card-name">Гель-сироватка для обличчя, шиї та декольте</span><span class="card-price">1 200 ₴</span></div></a></div>
+      <div class="card-wrap reveal" data-delay="1"><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/wash-gel.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.face">Обличчя</span><span class="card-name">Крем-гель для вмивання обличчя</span><span class="card-price">450 ₴</span></div></a></div>
+      <div class="card-wrap reveal" data-delay="2"><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/day-cream.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.face">Обличчя</span><span class="card-name">Щоденний зволожувальний крем для обличчя, шиї та зони декольте</span><span class="card-price">950 ₴</span></div></a></div>
+      <div class="card-wrap reveal" data-delay="3"><span class="card-badge" data-i18n="badge.new">Новинка</span><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/toner-aloe.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.face">Обличчя</span><span class="card-name">Тонік для обличчя «Фреш Алое»</span><span class="card-price">750 ₴</span></div></a></div>
+      <div class="card-wrap reveal"><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/shampoo.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.hair">Волосся</span><span class="card-name">Шампунь для об'єму волосся, зміцнення та стимулювання росту</span><span class="card-price">800 ₴</span></div></a></div>
+      <div class="card-wrap reveal" data-delay="1"><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/gel-mask.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.face">Обличчя</span><span class="card-name">Гель-маска для обличчя та зони під очима «Рідкі патчі»</span><span class="card-price">485 ₴</span></div></a></div>
+      <div class="card-wrap reveal" data-delay="2"><span class="card-badge" data-i18n="badge.new">Новинка</span><a href="product.html" class="card"><div class="card-media-wrap"><div class="card-media" style="background-image:url('assets/products/night-cream.jpg')"></div></div><div class="card-body"><span class="card-cat" data-i18n="cat.face">Обличчя</span><span class="card-name">Нічний крем для обличчя</span><span class="card-price">990 ₴</span></div></a></div>
     </div>
   </div>
 

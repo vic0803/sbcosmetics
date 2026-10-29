@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Контакти та доставка — Sophia Belinska Cosmetics</title>
+  <meta name="description" content="Зв'яжіться з Sophia Belinska Cosmetics. Умови доставки та оплати, відповіді на поширені питання." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/logo/monogram.png" alt="Sophie Bilynska Cosmetics" />
+      </a>
+      <div class="header-right">
+        <div class="lang">
+          <button data-lang="ua">UA</button>
+          <button data-lang="en">EN</button>
+        </div>
+        <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Flyout menu -->
+  <div class="menu-overlay"></div>
+  <nav class="mobile-menu" aria-label="Main menu">
+    <button class="menu-close" aria-label="Close">&times;</button>
+    <div class="menu-links">
+      <a href="brand.html" data-i18n="nav.about">Бренд</a>
+      <div class="menu-group">
+        <a href="catalog.html" class="menu-group-head" data-i18n="nav.catalog">Каталог</a>
+        <div class="submenu">
+          <a href="catalog.html" data-i18n="cat.face">Обличчя</a>
+          <a href="catalog.html" data-i18n="cat.body">Тіло</a>
+          <a href="catalog.html" data-i18n="cat.hair">Волосся</a>
+          <a href="catalog.html" data-i18n="nav.bundles">Набори</a>
+        </div>
+      </div>
+      <a href="contacts.html" data-i18n="nav.contacts">Контакти</a>
+      <a href="catalog.html" class="menu-cart">🛍 <span data-i18n="menu.cart">Кошик</span> <span class="cart-count">0</span></a>
+    </div>
+  </nav>
+
+  <!-- Contacts hero -->
+  <div class="container">
+    <div class="catalog-head">
+      <p class="eyebrow" data-i18n="contacts.kicker">Ми на зв'язку</p>
+      <h1 class="section-title" data-i18n="contacts.title">Контакти</h1>
+      <p class="section-sub" data-i18n="contacts.sub">Напишіть нам — відповідаємо щодня. Нижче — умови доставки та оплати.</p>
+    </div>
+  </div>
+
+  <!-- Contact details + form -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="contacts-grid">
+        <div class="contacts-info reveal">
+          <h2 data-i18n="contacts.reachTitle">Як з нами зв'язатися</h2>
+          <ul class="contacts-list">
+            <li><span class="ci-label" data-i18n="contacts.phone">Телефон</span><a href="tel:+380000000000">+38 000 000 00 00</a></li>
+            <li><span class="ci-label" data-i18n="contacts.email">Пошта</span><a href="mailto:hello@sbcosmetics.com">hello@sbcosmetics.com</a></li>
+            <li><span class="ci-label" data-i18n="contacts.insta">Instagram</span><a href="#">@sophia.belinska</a></li>
+            <li><span class="ci-label" data-i18n="contacts.hours">Графік</span><span data-i18n="contacts.hoursVal">Пн–Нд, 9:00–20:00</span></li>
+          </ul>
+        </div>
+
+        <form class="contacts-form reveal" data-delay="1" onsubmit="return false">
+          <h2 data-i18n="contacts.formTitle">Написати нам</h2>
+          <input class="field" type="text" data-i18n-ph="contacts.fName" placeholder="Ваше ім'я" />
+          <input class="field" type="email" data-i18n-ph="contacts.fEmail" placeholder="Email" />
+          <textarea class="field" rows="4" data-i18n-ph="contacts.fMsg" placeholder="Повідомлення"></textarea>
+          <button class="btn btn-fill btn-block" type="submit" data-i18n="contacts.fSend">Надіслати</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Delivery section -->
+  <section class="section" id="delivery" style="background:var(--black-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="container">
+      <p class="eyebrow" style="text-align:center" data-i18n="delivery.kicker">Доставка та оплата</p>
+      <h2 class="section-title" data-i18n="delivery.title">Доставка</h2>
+      <p class="section-sub" data-i18n="delivery.sub">Надсилаємо по всій Україні. Безкоштовна доставка від 2000 ₴.</p>
+      <div class="values">
+        <div class="value reveal">
+          <div class="value-icon">📦</div>
+          <h3 data-i18n="delivery.d1Title">Нова Пошта</h3>
+          <p data-i18n="delivery.d1Text">Відділення або поштомат по всій Україні. Відправка протягом 1–2 робочих днів.</p>
+        </div>
+        <div class="value reveal" data-delay="1">
+          <div class="value-icon">🚚</div>
+          <h3 data-i18n="delivery.d2Title">Кур'єр до дверей</h3>
+          <p data-i18n="delivery.d2Text">Адресна доставка кур'єром Нової Пошти у більшості міст.</p>
+        </div>
+        <div class="value reveal" data-delay="2">
+          <div class="value-icon">💳</div>
+          <h3 data-i18n="delivery.d3Title">Оплата</h3>
+          <p data-i18n="delivery.d3Text">Онлайн-оплата карткою або накладений платіж при отриманні.</p>
+        </div>
+      </div>
+      <p class="section-sub" style="margin-top:32px" data-i18n="delivery.note">Безкоштовна доставка діє на замовлення від 2000 ₴. Обмін і повернення — протягом 14 днів.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        © 2026 Sophia Belinska Cosmetics. <span data-i18n="foot.rights">Усі права захищено.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

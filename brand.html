@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Бренд та блог — Sophia Belinska Cosmetics</title>
+  <meta name="description" content="Еко-косметика ручної роботи Sophia Belinska: гіпоалергенний догляд для всієї родини — від чутливої шкіри дорослих до найменших. Блог про натуральний догляд." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/logo/monogram.png" alt="Sophie Bilynska Cosmetics" />
+      </a>
+      <div class="header-right">
+        <div class="lang">
+          <button data-lang="ua">UA</button>
+          <button data-lang="en">EN</button>
+        </div>
+        <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Flyout menu -->
+  <div class="menu-overlay"></div>
+  <nav class="mobile-menu" aria-label="Main menu">
+    <button class="menu-close" aria-label="Close">&times;</button>
+    <div class="menu-links">
+      <a href="brand.html" data-i18n="nav.about">Бренд</a>
+      <div class="menu-group">
+        <a href="catalog.html" class="menu-group-head" data-i18n="nav.catalog">Каталог</a>
+        <div class="submenu">
+          <a href="catalog.html" data-i18n="cat.face">Обличчя</a>
+          <a href="catalog.html" data-i18n="cat.body">Тіло</a>
+          <a href="catalog.html" data-i18n="cat.hair">Волосся</a>
+          <a href="catalog.html" data-i18n="nav.bundles">Набори</a>
+        </div>
+      </div>
+      <a href="contacts.html" data-i18n="nav.contacts">Контакти</a>
+      <a href="catalog.html" class="menu-cart">🛍 <span data-i18n="menu.cart">Кошик</span> <span class="cart-count">0</span></a>
+    </div>
+  </nav>
+
+  <!-- Brand hero -->
+  <section class="brand-hero" style="background-image:url('assets/brand/hero.jpg')">
+    <div class="brand-hero-inner">
+      <p class="eyebrow" data-i18n="brand.kicker">Еко-косметика ручної роботи</p>
+      <h1 data-i18n="brand.heroTitle">Турбота, що підходить усім</h1>
+      <p data-i18n="brand.heroText">Гіпоалергенний догляд із натуральних інгредієнтів — створений для чутливої шкіри, для дорослих і дітей, для всієї родини.</p>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section class="section">
+    <div class="container brand-intro reveal">
+      <p class="eyebrow" data-i18n="brand.missionKicker">Наша місія</p>
+      <h2 class="section-title" data-i18n="brand.missionTitle">Чистий догляд без компромісів</h2>
+      <p data-i18n="brand.mission1">Sophia Belinska народилася з простої ідеї: догляд за шкірою має бути безпечним для кожного. Ми варимо косметику малими партіями вручну, обираючи лише те, що можемо прочитати й вимовити у складі.</p>
+      <p data-i18n="brand.mission2">Без агресивних сульфатів, парабенів, штучних барвників та синтетичних віддушок. Тільки рослинні олії, екстракти та активи, що дбають про шкіру, а не навантажують її.</p>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section" style="padding-top:0">
+    <div class="container">
+      <div class="values">
+        <div class="value reveal">
+          <div class="value-icon">🌿</div>
+          <h3 data-i18n="brand.v1Title">Натуральний склад</h3>
+          <p data-i18n="brand.v1Text">Рослинні олії, масла та екстракти. Прозорий склад, який не доведеться розшифровувати.</p>
+        </div>
+        <div class="value reveal" data-delay="1">
+          <div class="value-icon">🤍</div>
+          <h3 data-i18n="brand.v2Title">Гіпоалергенність</h3>
+          <p data-i18n="brand.v2Text">Формули без поширених подразників — для чутливої та реактивної шкіри, що потребує делікатності.</p>
+        </div>
+        <div class="value reveal" data-delay="2">
+          <div class="value-icon">♻️</div>
+          <h3 data-i18n="brand.v3Title">Еко-підхід</h3>
+          <p data-i18n="brand.v3Text">Бамбук і скло замість пластику. Малі партії без відходів і зайвого транспортування.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature: family -->
+  <section class="section" style="background:var(--black-soft);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="container">
+      <div class="feature">
+        <div class="feature-media reveal" style="background-image:url('assets/brand/family.jpg')"></div>
+        <div class="feature-body reveal" data-delay="1">
+          <p class="eyebrow" data-i18n="brand.familyKicker">Для всієї родини</p>
+          <h2 data-i18n="brand.familyTitle">Один догляд — для кожного вдома</h2>
+          <p data-i18n="brand.familyText1">Шкіра дитини, підлітка й дорослого різна, але всім потрібна м'якість і безпека. Наші засоби розроблені так, щоб їх могли ділити між собою всі покоління родини.</p>
+          <p data-i18n="brand.familyText2">Ми тестуємо формули на переносимість і свідомо прибираємо все, що може викликати реакцію.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature: kids / sensitive -->
+  <section class="section">
+    <div class="container">
+      <div class="feature feature--reverse">
+        <div class="feature-media reveal" style="background-image:url('assets/brand/baby.jpg')"></div>
+        <div class="feature-body reveal" data-delay="1">
+          <p class="eyebrow" data-i18n="brand.kidsKicker">Найменшим — найделікатніше</p>
+          <h2 data-i18n="brand.kidsTitle">Ніжність, якій можна довіряти</h2>
+          <p data-i18n="brand.kidsText1">Для дитячої та надчутливої шкіри ми обираємо мінімалістичні формули: короткий склад, нейтральний pH і жодних зайвих добавок.</p>
+          <p data-i18n="brand.kidsText2">Наша мета проста — допомогти кожному доглядати шкіру спокійно, без страху перед етикеткою.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section class="section" id="blog" style="background:var(--black-soft);border-top:1px solid var(--line)">
+    <div class="container">
+      <p class="eyebrow" style="text-align:center" data-i18n="brand.blogKicker">Журнал</p>
+      <h2 class="section-title" data-i18n="brand.blogTitle">Блог про чистий догляд</h2>
+      <p class="section-sub" data-i18n="brand.blogSub">Прості поради про натуральну косметику, чутливу шкіру та догляд для всієї родини.</p>
+      <article class="post-feature reveal">
+        <div class="post-feature-media" style="background-image:url('assets/brand/blog-1.jpg')"></div>
+        <div class="post-feature-body">
+          <span class="post-tag" data-i18n="brand.postTag">Про бренд</span>
+          <h3 data-i18n="brand.postTitle">Як народилася Sophia Belinska</h3>
+          <p data-i18n="brand.postP1">Усе почалося з пошуку догляду, якому можна довіряти. Жодна баночка на полиці не давала впевненості у складі — тож перші засоби ми зварили власноруч, для своєї родини.</p>
+          <p data-i18n="brand.postP2">Так проста кухонна практика переросла у бренд. Ми лишили в основі головний принцип: якщо засіб безпечний для найчутливішої шкіри в домі, він підійде кожному. Короткий склад, прозорі інгредієнти, жодних агресивних добавок.</p>
+          <p data-i18n="brand.postP3">Сьогодні Sophia Belinska — це еко-косметика ручної роботи малими партіями, що дбає про всю родину: дорослих, підлітків і найменших. Наша місія проста — зробити чистий догляд доступним для всіх.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container brand-intro reveal">
+      <h2 class="section-title" data-i18n="brand.ctaTitle">Догляд, що дбає про кожного</h2>
+      <p class="section-sub" data-i18n="brand.ctaText">Відкрийте косметику, створену для чутливої шкіри та всієї родини.</p>
+      <a href="catalog.html" class="btn btn-fill" data-i18n="home.shopNow">Shop now</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        © 2026 Sophia Belinska Cosmetics. <span data-i18n="foot.rights">Усі права захищено.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -45,9 +45,10 @@
 :root {
   /* Palette — deep warm black, bone/pearl, gold used sparingly as a rare accent.
      Luxury palettes stay under ~5 active colours and lean on material contrast. */
-  --black: #08080a;
-  --black-soft: #0e0e11;
-  --black-card: #121216;
+  /* Pure black base — the primary site background. */
+  --black: #000000;
+  --black-soft: #070707;
+  --black-card: #0d0d0d;
 
   /* Gold — tuned to the polished metal of the brand's lipstick cases:
      bright near-white glints, warm gold mids, deep bronze shadows.
@@ -95,6 +96,8 @@
   --radius-sm: 8px;
   --header-h: 76px;
   --transition: 0.4s ease;
+  /* Shared page edge — logo, hero text and burger all align to this inset */
+  --edge: clamp(20px, 6vw, 88px);
 
   /* Generous spacing scale — whitespace is the cheapest luxury signal */
   --space-section: clamp(72px, 12vw, 160px);
@@ -116,6 +119,9 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  background: var(--black);
+  /* Kill the rubber-band / bounce overscroll */
+  overscroll-behavior: none;
 }
 
 body {
@@ -125,6 +131,7 @@ body {
   line-height: 1.6;
   font-size: 16px;
   overflow-x: hidden;
+  overscroll-behavior: none;
 }
 
 img {
@@ -235,62 +242,73 @@ body {
 /* ---------- Buttons ----------
    Outline button with a bone border that fills from the bottom on hover.
    The slow sweep reads more considered than a shiny gradient. */
+/* All buttons share the hero CTA language: transparent, sharp corners,
+   a broken corner-bracket frame that grows (but never fully closes) on hover,
+   and a crisp white label with a soft black shadow. */
 .btn {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 17px 42px;
-  border: 1px solid var(--line-strong);
+  padding: 18px 56px;
+  border: none;
   background: transparent;
-  color: var(--cream);
+  color: #ffffff;
   font-family: var(--font-head);
-  font-size: 0.72rem;
-  letter-spacing: 0.22em;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  border-radius: 999px;
-  overflow: hidden;
-  isolation: isolate;
-  transition: color 0.5s var(--ease-lux), border-color 0.5s var(--ease-lux);
+  font-weight: 600;
+  border-radius: 0;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  transition: color 0.4s var(--ease-lux);
+}
+
+/* Top-left + bottom-right corner brackets */
+.btn::before,
+.btn::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  transition: width 0.5s ease, height 0.5s ease;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.4));
+  pointer-events: none;
 }
 
 .btn::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: var(--cream);
-  transform: translateY(101%);
-  transition: transform 0.5s var(--ease-lux);
+  top: -1px;
+  left: -1px;
+  border-top: 1px solid rgba(255, 255, 255, 0.85);
+  border-left: 1px solid rgba(255, 255, 255, 0.85);
 }
 
-.btn:hover {
-  color: var(--black);
-  border-color: var(--cream);
+.btn::after {
+  bottom: -1px;
+  right: -1px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.85);
+  border-right: 1px solid rgba(255, 255, 255, 0.85);
 }
 
-.btn:hover::before {
-  transform: translateY(0);
+/* Brackets grow toward each other on hover, leaving a gap (70% max) */
+.btn:hover::before,
+.btn:hover::after,
+.btn:focus-visible::before,
+.btn:focus-visible::after {
+  width: 70%;
+  height: 70%;
 }
 
-/* Primary (filled): solid bone that inverts to a gold-hairline outline on hover */
+.btn:hover,
+.btn:focus-visible {
+  color: var(--gold-light);
+}
+
+/* Filled variant now behaves the same as the outline hero button */
 .btn-fill {
-  background: var(--cream);
-  border-color: var(--cream);
-  color: var(--black);
-  font-weight: 600;
-}
-
-.btn-fill::before {
   background: transparent;
-  transform: translateY(0);
-}
-
-.btn-fill:hover {
-  color: var(--gold);
-  border-color: var(--gold);
-  background: transparent;
+  color: #ffffff;
 }
 
 .btn-block {
@@ -303,6 +321,8 @@ body {
   top: 0;
   z-index: 100;
   height: var(--header-h);
+  /* positioning context for the edge-aligned logo + burger */
+  /* (sticky already establishes a containing block) */
   background: transparent;
   backdrop-filter: blur(0px);
   border-bottom: 1px solid transparent;
@@ -310,11 +330,11 @@ body {
     height var(--transition), box-shadow var(--transition), backdrop-filter var(--transition);
 }
 
-/* Condensed state once the page is scrolled */
+/* Header stays fully transparent at all times — on hero and while scrolling */
 .header.scrolled {
-  background: rgba(8, 8, 10, 0.82);
-  backdrop-filter: blur(16px) saturate(1.1);
-  border-bottom-color: var(--line);
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom-color: transparent;
 }
 
 /* Thin gold scroll-progress thread — 1px, understated */
@@ -340,7 +360,20 @@ body {
   gap: 16px;
 }
 
+/* Left group: logo pinned to the corner + language next to it */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Logo in the top-left corner */
 .logo {
+  position: absolute;
+  top: 50%;
+  left: var(--edge);
+  transform: translateY(-50%);
+  z-index: 120;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -348,8 +381,22 @@ body {
 }
 
 .logo img {
-  height: 38px;
+  height: 56px;
   width: auto;
+  /* White monogram with a soft black shadow, matching the hero title treatment */
+  filter:
+    brightness(0) invert(1)
+    drop-shadow(0 2px 5px rgba(0, 0, 0, 0.8))
+    drop-shadow(0 1px 2px rgba(0, 0, 0, 0.9));
+  transition: filter var(--transition), transform var(--transition);
+}
+
+.logo:hover img {
+  filter:
+    brightness(0) invert(1)
+    drop-shadow(0 2px 7px rgba(0, 0, 0, 0.85))
+    drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+  transform: translateY(-1px) scale(1.02);
 }
 
 .logo-text {
@@ -381,7 +428,7 @@ body {
 
 .nav a {
   position: relative;
-  font-size: 0.8rem;
+  font-size: 1.04rem; /* +30% from 0.8rem */
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -449,44 +496,68 @@ body {
   padding: 0 4px;
 }
 
-/* Language switcher */
+/* Language switcher — two independent buttons, UA | EN, each clickable
+   on its own. No shared container hover that would block selection. */
 .lang {
-  display: flex;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Thin divider between the two languages */
+.lang button + button {
+  border-left: 1px solid rgba(255, 255, 255, 0.35);
+  padding-left: 12px;
+  margin-left: 4px;
 }
 
 .lang button {
   background: none;
   border: none;
-  color: var(--text-muted);
-  font-size: 0.72rem;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem; /* +25% from 0.72rem */
   letter-spacing: 0.1em;
-  padding: 5px 9px;
-  transition: all var(--transition);
+  font-weight: 600;
+  padding: 6px 4px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  transition: color var(--transition);
 }
 
+.lang button:hover { color: #ffffff; }
+
+/* Active language — gold, clearly marked */
 .lang button.active {
-  background: var(--gold);
-  color: var(--black);
+  color: var(--gold);
 }
 
-/* Burger */
+/* Right group: language + burger, pinned to the right edge (mirrors logo) */
+.header-right {
+  position: absolute;
+  top: 50%;
+  right: var(--edge);
+  transform: translateY(-50%);
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
 .burger {
   display: inline-flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   background: none;
   border: none;
   padding: 4px;
 }
 
 .burger span {
-  width: 22px;
-  height: 2px;
-  background: var(--text);
+  width: 30px;
+  height: 2.5px;
+  background: #ffffff;
   border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   transition: transform 0.4s var(--ease-lux), opacity 0.3s var(--ease-lux),
     background 0.3s var(--ease-lux);
 }
@@ -525,102 +596,125 @@ body {
 
 /* Flyout menu — slides in from the LEFT like dior.com.
    A panel, not a full-bleed screen, with the page darkened behind it. */
+/* Flyout drawer — floats on the RIGHT with a 20px gap on every side,
+   translucent with a strong blur so the page shows through softly. */
 .mobile-menu {
   position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: min(440px, 88vw);
-  background: linear-gradient(180deg, #0c0b0d 0%, #121016 100%);
-  border-right: 1px solid var(--line);
-  box-shadow: 40px 0 80px rgba(0, 0, 0, 0.5);
-  transform: translateX(-100%);
-  transition: transform 0.6s var(--ease-lux);
+  top: calc(var(--header-h) + 10px); /* sits 10px below the header, not the screen */
+  right: 20px;
+  bottom: 20px;
+  width: min(420px, calc(100vw - 40px));
+  background: rgba(14, 13, 16, 0.55);
+  -webkit-backdrop-filter: blur(28px) saturate(1.2);
+  backdrop-filter: blur(28px) saturate(1.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+  transform: translateX(calc(100% + 24px));
+  transition: transform 0.6s var(--ease-lux), opacity 0.6s var(--ease-lux);
   z-index: 99;
-  padding: calc(var(--header-h) + 36px) 40px 40px;
+  padding: 72px 36px 36px;
   display: flex;
   flex-direction: column;
-  gap: 0;
   overflow-y: auto;
+  /* Keep the drawer's scroll from rubber-banding or chaining to the page */
+  overscroll-behavior: contain;
 }
 
 .mobile-menu.open {
   transform: translateX(0);
 }
 
-/* Thin gold rule above the links — language-neutral kicker */
-.mobile-menu::before {
-  content: "";
-  width: 32px;
-  height: 1px;
-  background: var(--gold);
-  margin-bottom: 28px;
-  opacity: 0;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: opacity 0.5s var(--ease-lux), transform 0.5s var(--ease-lux);
-  transition-delay: 0.1s;
+/* Close button, top-right inside the drawer */
+.menu-close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  background: none;
+  border: none;
+  color: var(--cream);
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+.menu-close:hover { color: var(--gold); }
+
+/* Link stack — 1.5-line spacing between items */
+.menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
 }
 
-.mobile-menu.open::before {
-  opacity: 1;
-  transform: scaleX(1);
-}
-
-.mobile-menu a {
+.menu-links > a,
+.menu-group-head {
   position: relative;
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 300;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   line-height: 1.1;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--line);
   color: var(--cream);
-  /* Each item starts shifted up + transparent; revealed in a slow cascade */
-  opacity: 0;
-  transform: translateY(18px);
-  transition: color 0.4s var(--ease-lux),
-    opacity 0.6s var(--ease-lux),
-    transform 0.6s var(--ease-lux);
+  transition: color var(--transition), padding-left var(--transition);
 }
 
-/* Gold tick that grows from the left on hover / active */
-.mobile-menu a::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  width: 0;
-  height: 1px;
-  background: var(--gold);
-  transform: translateY(-50%);
-  transition: width 0.4s var(--ease-lux);
+.menu-links > a:hover,
+.menu-group-head:hover { color: var(--gold); padding-left: 8px; }
+
+/* Catalog group with its expanded submenu */
+.menu-group { display: flex; flex-direction: column; gap: 1.5em; }
+
+.submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1em;
+  padding-left: 18px;
+  border-left: 1px solid var(--line);
+  margin-top: 0.3em;
 }
 
-.mobile-menu.open a {
-  opacity: 1;
-  transform: translateY(0);
+.submenu a {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color var(--transition), padding-left var(--transition);
 }
+.submenu a:hover { color: var(--gold); padding-left: 6px; }
 
-/* Staggered reveal of menu links — slow, confident cascade */
-.mobile-menu.open a:nth-child(1) { transition-delay: 0.14s; }
-.mobile-menu.open a:nth-child(2) { transition-delay: 0.21s; }
-.mobile-menu.open a:nth-child(3) { transition-delay: 0.28s; }
-.mobile-menu.open a:nth-child(4) { transition-delay: 0.35s; }
-.mobile-menu.open a:nth-child(5) { transition-delay: 0.42s; }
-
-.mobile-menu a:hover,
-.mobile-menu a:focus-visible {
+/* Cart row */
+.menu-cart {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 0.5em;
+  padding-top: 1.5em;
+  border-top: 1px solid var(--line);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cream);
+  transition: color var(--transition);
+}
+.menu-cart:hover { color: var(--gold); }
+.menu-cart .cart-count {
+  background: rgba(232, 184, 75, 0.14);
   color: var(--gold);
-  padding-left: 30px;
+  border-radius: 999px;
+  min-width: 22px;
+  height: 22px;
+  display: inline-grid;
+  place-items: center;
+  font-size: 0.75rem;
+  padding: 0 6px;
 }
 
-.mobile-menu a:hover::before,
-.mobile-menu a:focus-visible::before {
-  width: 20px;
-}
+/* Fade/slide the whole link stack in when the drawer opens */
+.menu-links { opacity: 0; transform: translateY(14px); transition: opacity 0.5s var(--ease-lux) 0.1s, transform 0.5s var(--ease-lux) 0.1s; }
+.mobile-menu.open .menu-links { opacity: 1; transform: none; }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -796,7 +890,7 @@ body {
 
 .card-media {
   aspect-ratio: 4 / 5;
-  background: #0d0c0e;
+  background: #070707;
   background-size: cover;
   background-position: center;
   display: grid;
@@ -935,7 +1029,7 @@ body {
   padding: 22px;
   /* The inline background-image set in HTML is inherited by ::after and zoomed.
      The element itself paints only a fallback colour, never the static photo. */
-  background-color: #0d0c0e;
+  background-color: #070707;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 0 0; /* hide the static copy on the element; ::after shows it */
@@ -1174,7 +1268,7 @@ body {
 
 .pdp-main {
   aspect-ratio: 1 / 1;
-  background: #0d0c0e;
+  background: #070707;
   background-size: cover;
   background-position: center;
   border: 1px solid var(--line);
@@ -1384,8 +1478,6 @@ body {
 }
 
 @media (min-width: 900px) {
-  .nav { display: flex; }
-  .burger { display: none; }
   .grid { grid-template-columns: repeat(4, 1fr); gap: 48px 36px; }
   .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
   .pdp { grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
@@ -1406,7 +1498,7 @@ body {
 
 .editorial-media {
   min-height: 56vh;
-  background: #0d0c0e center / cover no-repeat;
+  background: #070707 center / cover no-repeat;
 }
 
 .editorial-body {
@@ -1473,7 +1565,7 @@ body {
   border-radius: var(--radius);
   overflow: hidden;
   border: 1px solid var(--line);
-  background: #0d0c0e center / cover no-repeat;
+  background: #070707 center / cover no-repeat;
 }
 
 .story-media::after {
@@ -1582,4 +1674,274 @@ body {
   .js .reveal { opacity: 1 !important; transform: none !important; }
   .hero-inner > * { opacity: 1 !important; transform: none !important; }
   .hero-photo { transform: none !important; }
+}
+
+/* ============================================================
+   Brand page + Blog
+   ============================================================ */
+
+/* Brand hero banner */
+.brand-hero {
+  position: relative;
+  min-height: 62vh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  overflow: hidden;
+  background: #000000 center / cover no-repeat;
+}
+
+.brand-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11,11,12,0.55), rgba(11,11,12,0.8));
+}
+
+.brand-hero-inner {
+  position: relative;
+  z-index: 1;
+  padding: 72px 20px;
+  max-width: 760px;
+}
+
+.brand-hero h1 {
+  font-family: var(--font-display, "Futura PT", "Jost", sans-serif);
+  font-size: clamp(2.2rem, 7vw, 4rem);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  margin: 14px 0 18px;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.7);
+}
+
+.brand-hero p {
+  color: var(--cream);
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Mission / intro prose */
+.brand-intro {
+  max-width: 760px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.brand-intro p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+/* Values grid */
+.values {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.value {
+  background: var(--black-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.value:hover { border-color: var(--gold); transform: translateY(-3px); }
+
+.value-icon { font-size: 2rem; margin-bottom: 14px; }
+
+.value h3 {
+  font-family: var(--font-head);
+  font-size: 1.2rem;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+
+.value p { color: var(--text-muted); font-size: 0.94rem; line-height: 1.7; }
+
+/* Split feature (image + text) */
+.feature {
+  display: grid;
+  gap: 32px;
+  align-items: center;
+}
+
+.feature-media {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: #070707 center / cover no-repeat;
+}
+
+.feature-body h2 {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  margin-bottom: 16px;
+}
+
+.feature-body p { color: var(--text-muted); line-height: 1.8; margin-bottom: 14px; }
+
+/* Blog grid */
+.blog-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.post {
+  background: var(--black-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.post:hover { border-color: var(--gold); transform: translateY(-4px); }
+
+.post-media {
+  aspect-ratio: 16 / 10;
+  background: #070707 center / cover no-repeat;
+}
+
+.post-body { padding: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+
+.post-tag {
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.post h3 {
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  color: var(--cream);
+  line-height: 1.35;
+}
+
+.post p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.65; }
+
+.post-more {
+  margin-top: auto;
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Single featured blog article */
+.post-feature {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  background: var(--black-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.post-feature-media {
+  min-height: 240px;
+  background: #070707 center / cover no-repeat;
+}
+
+.post-feature-body {
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.post-feature-body h3 {
+  font-family: var(--font-head);
+  font-size: clamp(1.3rem, 3vw, 1.7rem);
+  color: var(--cream);
+  line-height: 1.3;
+}
+
+.post-feature-body p { color: var(--text-muted); font-size: 0.96rem; line-height: 1.75; }
+
+@media (min-width: 680px) {
+  .values { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (min-width: 820px) {
+  .post-feature { grid-template-columns: 1fr 1fr; }
+  .post-feature-body { padding: 40px 38px; }
+}
+
+@media (min-width: 900px) {
+  .feature { grid-template-columns: 1fr 1fr; gap: 56px; }
+  .feature--reverse .feature-media { order: 2; }
+}
+
+/* ============================================================
+   Contacts page
+   ============================================================ */
+.contacts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+.contacts-info h2,
+.contacts-form h2 {
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  margin-bottom: 22px;
+}
+
+.contacts-list { display: flex; flex-direction: column; gap: 18px; }
+
+.contacts-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.ci-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.contacts-list a,
+.contacts-list span:not(.ci-label) {
+  color: var(--cream);
+  font-size: 1.05rem;
+}
+
+.contacts-list a:hover { color: var(--gold); }
+
+.contacts-form { display: flex; flex-direction: column; gap: 14px; }
+
+.field {
+  width: 100%;
+  background: var(--black-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 14px 16px;
+  transition: border-color var(--transition);
+}
+
+.field:focus { outline: none; border-color: var(--gold); }
+.field::placeholder { color: var(--text-muted); }
+textarea.field { resize: vertical; }
+
+@media (min-width: 820px) {
+  .contacts-grid { grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
 }

@@ -28,8 +28,10 @@
   var ready = false;
 
   function framePath(i) {
-    // 01.jpg .. 11.jpg
-    return "assets/sequence/" + (i < 10 ? "0" + i : "" + i) + ".jpg";
+    // Reversed order: slot 1 -> 11.jpg, slot 2 -> 10.jpg, ... slot 11 -> 01.jpg.
+    // Scroll now plays the sequence from frame 11 down to frame 1.
+    var n = FRAME_COUNT + 1 - i; // i is 1..FRAME_COUNT
+    return "assets/sequence/" + (n < 10 ? "0" + n : "" + n) + ".jpg";
   }
 
   // Phase labels mapped to the frame range (night → morning)

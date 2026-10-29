@@ -15,33 +15,35 @@
     <div class="container header-inner">
       <a href="index.html" class="logo">
         <img src="assets/logo/monogram.png" alt="Sophie Bilynska Cosmetics" />
-        <span class="logo-text">Sophie <b>Bilynska</b></span>
       </a>
-      <nav class="nav">
-        <a href="catalog.html" data-i18n="nav.catalog">Каталог</a>
-        <a href="catalog.html" data-i18n="nav.bundles">Набори</a>
-        <a href="index.html#about" data-i18n="nav.about">Бренд</a>
-        <a href="index.html" data-i18n="nav.delivery">Доставка</a>
-        <a href="index.html" data-i18n="nav.contacts">Контакти</a>
-      </nav>
-      <div class="header-actions">
+      <div class="header-right">
         <div class="lang">
           <button data-lang="ua">UA</button>
           <button data-lang="en">EN</button>
         </div>
-        <button class="icon-btn" aria-label="Wishlist">♥</button>
-        <button class="icon-btn" aria-label="Cart">🛍<span class="cart-count">0</span></button>
-        <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+        <button class="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </div>
   </header>
 
-  <nav class="mobile-menu">
-    <a href="catalog.html" data-i18n="nav.catalog">Каталог</a>
-    <a href="catalog.html" data-i18n="nav.bundles">Набори</a>
-    <a href="index.html#about" data-i18n="nav.about">Бренд</a>
-    <a href="index.html" data-i18n="nav.delivery">Доставка</a>
-    <a href="index.html" data-i18n="nav.contacts">Контакти</a>
+  <!-- Flyout menu -->
+  <div class="menu-overlay"></div>
+  <nav class="mobile-menu" aria-label="Main menu">
+    <button class="menu-close" aria-label="Close">&times;</button>
+    <div class="menu-links">
+      <a href="brand.html" data-i18n="nav.about">Бренд</a>
+      <div class="menu-group">
+        <a href="catalog.html" class="menu-group-head" data-i18n="nav.catalog">Каталог</a>
+        <div class="submenu">
+          <a href="catalog.html" data-i18n="cat.face">Обличчя</a>
+          <a href="catalog.html" data-i18n="cat.body">Тіло</a>
+          <a href="catalog.html" data-i18n="cat.hair">Волосся</a>
+          <a href="catalog.html" data-i18n="nav.bundles">Набори</a>
+        </div>
+      </div>
+      <a href="contacts.html" data-i18n="nav.contacts">Контакти</a>
+      <a href="catalog.html" class="menu-cart">🛍 <span data-i18n="menu.cart">Кошик</span> <span class="cart-count">0</span></a>
+    </div>
   </nav>
 
   <div class="container">

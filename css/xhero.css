@@ -5,10 +5,13 @@
 
 .xhero {
   position: relative;
+  /* Pull up under the transparent header so the canvas starts at the very
+     top of the viewport — no black strip between header and the first frame. */
+  margin-top: calc(var(--header-h) * -1);
   /* Tall scroll area so the pinned stage has room to play the whole
-     night→morning sequence. ~450vh for 11 frames = unhurried pacing. */
+     sequence. ~450vh for 11 frames = unhurried pacing. */
   height: 450vh;
-  background: #050506;
+  background: #000000;
 }
 
 /* Pinned viewport: stays fixed while .xhero scrolls past */
@@ -23,7 +26,7 @@
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: #050506;
+  background-color: #000000;
 }
 
 /* Frame canvas fills the whole stage (frames drawn with cover-fit in JS) */
@@ -39,7 +42,7 @@
 .xhero-overlay {
   position: absolute;
   top: 12vh;
-  left: clamp(20px, 6vw, 88px);
+  left: var(--edge, clamp(20px, 6vw, 88px));
   z-index: 3;
   max-width: min(90vw, 640px);
   display: flex;
@@ -75,8 +78,74 @@
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
 }
 
+/* CTA — transparent, sharp-cornered, broken frame (top-left + bottom-right
+   corner brackets). On hover the brackets grow toward each other but
+   never fully close — a gap remains at top-right and bottom-left. */
 .xhero-cta {
-  margin-top: 28px;
+  position: relative;
+  margin-top: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 60px; /* +30% wider than the earlier 46px */
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: #ffffff;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  /* Text shadow — half the earlier blur */
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  overflow: visible;
+  /* Subtle inner + outer box shadow on the CTA area (half-blur of text) */
+  box-shadow:
+    inset 0 0 2px rgba(255, 255, 255, 0.06),
+    0 0 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Top-left corner bracket */
+.xhero-cta::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 26px;
+  height: 26px;
+  border-top: 1px solid rgba(255, 255, 255, 0.85);
+  border-left: 1px solid rgba(255, 255, 255, 0.85);
+  /* Shadow on the bracket lines — subtle, short blur */
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.4));
+  transition: width 0.55s ease, height 0.55s ease;
+}
+
+/* Bottom-right corner bracket */
+.xhero-cta::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 26px;
+  height: 26px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.85);
+  border-right: 1px solid rgba(255, 255, 255, 0.85);
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.4));
+  transition: width 0.55s ease, height 0.55s ease;
+}
+
+/* On hover: brackets grow smoothly toward each other, but a gap stays
+   at top-right and bottom-left — they never fully close (70% max). */
+.xhero-cta:hover::before,
+.xhero-cta:focus-visible::before {
+  width: 70%;
+  height: 70%;
+}
+
+.xhero-cta:hover::after,
+.xhero-cta:focus-visible::after {
+  width: 70%;
+  height: 70%;
 }
 
 /* ---------- Reduced motion / no-JS fallback ----------
